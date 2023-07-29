@@ -30,7 +30,7 @@ public class TodoController {
     public String addToTable(@RequestParam String itemName, Model model) {
         TodoItem item = todoItemRepository.save(new TodoItem(null, itemName, false));
         model.addAttribute("item", item);
-        return "todo :: todo-line";
+        return "todo-line :: todo-line";
     }
 
     @PostMapping("/completed/{itemId}")
@@ -40,7 +40,7 @@ public class TodoController {
                         "item",
                         todoItemRepository.save(new TodoItem(item.id(), item.name(), !item.completed()))
                 ));
-        return "todo :: todo-line";
+        return "todo-line :: todo-line";
     }
 
 }

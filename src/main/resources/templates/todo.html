@@ -21,17 +21,7 @@
     </tr>
     </thead>
     <tbody id="todo-list" name="todo-list">
-    <tr th:each="item: ${items}" th:fragment="todo-line">
-        <td><input
-                th:id="'completed-' + ${item.id()}"
-                type="checkbox"
-                hx-swap="outerHTML"
-                th:hx-post="'/completed/' + ${item.id()}"
-                th:checked="${item.completed()}"
-                hx-target="closest tr">
-        </td>
-        <td><label th:text="${item.name()}"></label></td>
-    </tr>
+    <tr th:each="item: ${items}" th:include="todo-line :: todo-line(item)"/>
     </tbody>
 </table>
 </body>

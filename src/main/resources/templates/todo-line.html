@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<tr th:fragment="todo-line(item)">
+    <td><input
+            th:id="'completed-' + ${item.id()}"
+            type="checkbox"
+            hx-swap="outerHTML"
+            th:hx-post="'/completed/' + ${item.id()}"
+            th:checked="${item.completed()}"
+            hx-target="closest tr">
+    </td>
+    <td><label th:text="${item.name()}"></label></td>
+</tr>
+</html>
