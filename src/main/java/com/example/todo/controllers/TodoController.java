@@ -5,10 +5,7 @@ import com.example.todo.core.TodoItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class TodoController {
@@ -30,7 +27,7 @@ public class TodoController {
     public String addToTable(@RequestParam String itemName, Model model) {
         TodoItem item = todoItemRepository.save(new TodoItem(null, itemName, false));
         model.addAttribute("item", item);
-        return "todo-line :: todo-line";
+        return "todo-line";
     }
 
     @PostMapping("/completed/{itemId}")
@@ -40,7 +37,7 @@ public class TodoController {
                         "item",
                         todoItemRepository.save(new TodoItem(item.id(), item.name(), !item.completed()))
                 ));
-        return "todo-line :: todo-line";
+        return "todo-line";
     }
 
 }

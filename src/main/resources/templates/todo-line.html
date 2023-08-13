@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
 <tr th:fragment="todo-line(item)">
     <td><input
             th:id="'completed-' + ${item.id()}"
@@ -11,4 +9,3 @@
     </td>
     <td><label th:text="${item.name()}"></label></td>
 </tr>
-</html>
